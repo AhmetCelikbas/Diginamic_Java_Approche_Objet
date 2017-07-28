@@ -24,7 +24,7 @@ public class Pizza {
 	 * @param nom
 	 * @param prix
 	 */
-	Pizza(String code, String nom, double prix) {
+	public Pizza(String code, String nom, double prix) {
 		this.id = this.lastId;
 		this.lastId++;
 		this.code = code;
