@@ -1,6 +1,7 @@
 package fr.pizzeria.console;
 
 import java.util.Scanner;
+import fr.pizzeria.model.Pizza;
 
 /**
  * 
@@ -25,6 +26,9 @@ public class PizzeriaAdminConsoleApp {
 	 */
 	private static int menuChoisi = 0;
 	private static String buffer;
+	private static Pizza[] tableauPizzas = new Pizza[8];
+	
+	
 	
 	/**
 	 * @param args
@@ -65,6 +69,22 @@ public class PizzeriaAdminConsoleApp {
 	
 			System.out.print("\n\n");
 			
+			
+			/*
+			 * Définition du tableau des pizzas
+			 */
+			tableauPizzas[0] = new Pizza("PEP", "Pépéroni", 12.50);
+			tableauPizzas[1] = new Pizza("MAR", "Margherita", 14.00);
+			tableauPizzas[2] = new Pizza("REIN", "La Reine", 11.50);
+			tableauPizzas[3] = new Pizza("FRO", "La 4 fromages", 12.00);
+			tableauPizzas[4] = new Pizza("CAN", "La cannibale", 12.50);
+			tableauPizzas[5] = new Pizza("SAV", "La savoyarde", 13.00);
+			tableauPizzas[6] = new Pizza("ORI", "L’orientale", 13.50);
+			tableauPizzas[7] = new Pizza("IND", "L’indienne", 14.00);
+			
+			/*
+			 * Choisir le code à exécuter en fonction du menu choisi
+			 */
 			switch(menuChoisi) {
 			case 1:
 				listerLesPizzas();
@@ -79,7 +99,6 @@ public class PizzeriaAdminConsoleApp {
 				supprimerPizza();
 				break;
 			default:
-		
 				break;
 			}
 			
@@ -111,7 +130,6 @@ public class PizzeriaAdminConsoleApp {
 		return true; // L'utilisateur à choisi un menu existant.
 	}
 	
-	
 	/**
 	 * Affiche le menu
 	 */
@@ -126,12 +144,17 @@ public class PizzeriaAdminConsoleApp {
 		
 	}
 	
-	
 	/**
 	 * Liste les pizzas
 	 */
 	private static void listerLesPizzas() {
 		System.out.println("Liste des pizzas");
+		/*
+		 * Parcourt le tableau des pizzas (tableauPizzas) et affiche le code, le nom et le prix
+		 */
+		for (int i = 0; i < tableauPizzas.length; i++) {
+			System.out.println(tableauPizzas[i].getCode() + " -> " + tableauPizzas[i].getNom() + " (" + tableauPizzas[i].getPrix() + " €)");
+		}
 	}
 
 	/**
