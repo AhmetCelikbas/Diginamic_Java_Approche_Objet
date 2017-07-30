@@ -44,8 +44,7 @@ public class PizzeriaAdminConsoleApp {
 		 */
 		tableauPizzas[0] = new Pizza("PEP", "Pépéroni", 12.50);
 		tableauPizzas[1] = new Pizza("MAR", "Margherita", 14.00);
-//		tableauPizzas[2] = new Pizza("REIN", "La Reine", 11.50);
-		tableauPizzas[2] = null;
+		tableauPizzas[2] = new Pizza("REIN", "La Reine", 11.50);
 		tableauPizzas[3] = new Pizza("FRO", "La 4 fromages", 12.00);
 		tableauPizzas[4] = new Pizza("CAN", "La cannibale", 12.50);
 		tableauPizzas[5] = new Pizza("SAV", "La savoyarde", 13.00);
@@ -336,6 +335,22 @@ public class PizzeriaAdminConsoleApp {
 	 */
 	private static void supprimerPizza() {
 		System.out.println("Suppression d’une pizza");
+		listerLesPizzas();
+		System.out.print("Sélectionner une pizza à supprimer (de 1 à " + tableauPizzas.length + ") : ");
+		buffer = scan.next();		// Attente du choix du menu par l'utilisateur
+		
+		/*
+		 * On vérifie que l'utilisateur a choisi un menu qui existe
+		 */
+		while(!buffer.matches(regexScanNombre)) {
+			System.out.println("Merci d'entrer un numéro de pizza compris entre 1 et " + tableauPizzas.length + ".");
+			System.out.print("Sélectionner la pizza à supprimer (de 1 à " + tableauPizzas.length + ") : ");
+			buffer = scan.next();
+		}
+		
+		tableauPizzas[Integer.parseInt(buffer)-1] = null;
+		System.out.println("Pizza supprimée.");
+		
 	}
 	
 	
