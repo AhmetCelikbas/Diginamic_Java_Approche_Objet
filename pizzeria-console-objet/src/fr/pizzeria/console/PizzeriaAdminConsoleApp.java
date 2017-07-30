@@ -262,7 +262,72 @@ public class PizzeriaAdminConsoleApp {
 	 * Met à jour une pizza
 	 */
 	private static void mettreAJourPizza() {
+		System.out.println("Mise à jour d’une pizza");
+		
+		listerLesPizzas();
+		System.out.println("N°99 : Abandonner");
+		System.out.print("Sélectionner une pizza (de 1 à " + tableauPizzas.length + " ou 99 pour abandonner) : ");
+		buffer = scan.next();		// Attente du choix du menu par l'utilisateur
+		
+		/*
+		 * On vérifie que l'utilisateur a choisi un menu qui existe
+		 */
+		while(!buffer.matches(regexScanNombre)) {
+			System.out.println("Merci d'entrer un numéro de pizza compris entre 1 et " + tableauPizzas.length + " ou de saisir le numéro 99 pour abandonner.");
+			System.out.print("Sélectionner la pizza à mettre a jour (de 1 à " + tableauPizzas.length + " ou 99 pour abandonner) : ");
+			buffer = scan.next();
+		}
 
+		if(Integer.parseInt(buffer) == 99) {
+			return;
+		}
+		
+
+		String codeRenseigne;		// code de la nouvelle pizza
+		String nomRenseigne;			// nom de la nouvelle pizza
+		String prixRenseigne;		// prix de la novuelle pizza
+		
+		
+		/*
+		 * Demande du code
+		 */
+		System.out.print("Veuillez saisir le nouveau code (Ancien code : " + tableauPizzas[Integer.parseInt(buffer)-1].getCode() + ") : ");
+		codeRenseigne = scan.next();
+		
+		/*
+		 * Demande du nom
+		 */
+		System.out.print("Veuillez saisir le nom (sans espace) (Ancien nom : " + tableauPizzas[Integer.parseInt(buffer)-1].getNom() + "): ");
+		nomRenseigne = scan.next();
+
+		/*
+		 * Demande du prix
+		 */
+		System.out.print("Veuillez saisir le prix (Ancien prix : " + tableauPizzas[Integer.parseInt(buffer)-1].getPrix() + "): ");
+		prixRenseigne = scan.next();
+		prixRenseigne = prixRenseigne.replace(',', '.');		// Remplacer la virgule par un point si il en à une
+		
+		/*
+		 * Verifier le prix
+		 */
+		while(!verifierPrix(prixRenseigne)) {
+			System.out.println("Saisie incorrecte.");
+			System.out.print("Veuillez saisir le prix à nouveau (Ancien prix : " + tableauPizzas[Integer.parseInt(buffer)-1].getCode() + "): ");
+			prixRenseigne = scan.next();
+		}
+		
+		
+		System.out.println("Pizza N°" + (Integer.parseInt(buffer)) + " : ancienne : " + tableauPizzas[Integer.parseInt(buffer)-1].getCode() + " -> " + tableauPizzas[Integer.parseInt(buffer)-1].getNom() + " (" + tableauPizzas[Integer.parseInt(buffer)-1].getPrix() + " €)");
+		System.out.println("Pizza N°" + (Integer.parseInt(buffer)) + " : nouvelle : " + codeRenseigne + " -> " + nomRenseigne + " (" + Double.parseDouble(prixRenseigne) + " €)");
+		
+		System.out.print("Confirmer la mise à jour ? (o/n) : ");
+		if(scan.next().equals("oui")) {
+			tableauPizzas[Integer.parseInt(buffer)-1].setCode(codeRenseigne);
+			tableauPizzas[Integer.parseInt(buffer)-1].setNom(nomRenseigne);
+			tableauPizzas[Integer.parseInt(buffer)-1].setPrix(Double.parseDouble(prixRenseigne));
+			System.out.println("Pizza mise à jour.");
+		}
+		
 	}
 	
 	
