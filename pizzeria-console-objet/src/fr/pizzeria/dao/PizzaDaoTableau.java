@@ -88,11 +88,13 @@ public class PizzaDaoTableau implements iPizzaDao {
 	@Override
 	public boolean updatePizza(String codePizza, Pizza pizza) {
 		for (int i = 0; i < tableauPizzas.length; i++) { // on parcourt le tableau de pizzas
-			if (tableauPizzas[i].getCode().equals(codePizza)) { // Si on trouve la pizza correspondant au code
-				tableauPizzas[i].setCode(pizza.getCode()); // définir le code de la pizza
-				tableauPizzas[i].setNom(pizza.getNom()); // définir le nom de la pizza
-				tableauPizzas[i].setPrix(pizza.getPrix()); // définir le prix de la pizza
-				return true; // on notifie la mise à jour de la pizza en retourant un booleen positif
+			if(tableauPizzas[i] != null) {
+				if (tableauPizzas[i].getCode().equals(codePizza)) { // Si on trouve la pizza correspondant au code
+					tableauPizzas[i].setCode(pizza.getCode()); // définir le code de la pizza
+					tableauPizzas[i].setNom(pizza.getNom()); // définir le nom de la pizza
+					tableauPizzas[i].setPrix(pizza.getPrix()); // définir le prix de la pizza
+					return true; // on notifie la mise à jour de la pizza en retourant un booleen positif
+				}
 			}
 		}
 		return false; // Si aucune pizza ne correspond au code de la pizza, on retourne un booleen
@@ -124,9 +126,11 @@ public class PizzaDaoTableau implements iPizzaDao {
 	@Override
 	public boolean deletePizza(String codePizza) {
 		for (int i = 0; i < tableauPizzas.length; i++) { // on parcourt le tableau de pizzas
-			if (tableauPizzas[i].getCode().equals(codePizza)) { // Si on trouve la pizza correspondant au code
-				tableauPizzas[i] = null; // On supprime la pizza
-				return true; // on notifie la suppression de la pizza en retourant un booleen positif
+			if(tableauPizzas[i] != null) {
+				if (tableauPizzas[i].getCode().equals(codePizza)) { // Si on trouve la pizza correspondant au code
+					tableauPizzas[i] = null; // On supprime la pizza
+					return true; // on notifie la suppression de la pizza en retourant un booleen positif
+				}
 			}
 		}
 		return false; // Si aucune pizza ne correspond au code de la pizza, on retourne un booleen
