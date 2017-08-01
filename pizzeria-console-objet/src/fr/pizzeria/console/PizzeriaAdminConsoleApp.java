@@ -2,6 +2,7 @@ package fr.pizzeria.console;
 
 import java.util.Scanner;
 
+import fr.pizzeria.dao.PizzaDaoList;
 import fr.pizzeria.dao.PizzaDaoTableau;
 import fr.pizzeria.dao.iPizzaDao;
 
@@ -42,7 +43,8 @@ public class PizzeriaAdminConsoleApp extends Outils {
 		scan = new Scanner(System.in); // Instancie la classe Scanner pour capturer les informations renseignées par le
 										// clavier.
 		menu = new Menu();
-		dao = new PizzaDaoTableau();
+//		dao = new PizzaDaoTableau();
+		dao = new PizzaDaoList();
 		listerLesPizzas = new ListerLesPizzasOptionMenu(dao);
 		nouvellePizzaOptionMenu = new NouvellePizzaOptionMenu(dao);
 		modifierPizzaOptionMenu = new ModifierPizzaOptionMenu(dao);
