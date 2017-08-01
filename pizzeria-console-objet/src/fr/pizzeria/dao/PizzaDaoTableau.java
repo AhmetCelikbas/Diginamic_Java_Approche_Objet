@@ -107,11 +107,10 @@ public class PizzaDaoTableau implements iPizzaDao {
 	@Override
 	public Pizza getPizzaByCode(String codePizza) {
 		for (int i = 0; i < tableauPizzas.length; i++) { // on parcourt le tableau de pizzas
-			if(tableauPizzas[i] == null) {
-				return null;
-			}
-			if (tableauPizzas[i].getCode().equals(codePizza)) { // Si on trouve la pizza correspondant au code
-				return tableauPizzas[i]; // on retourne la pizza
+			if(tableauPizzas[i] != null) {
+				if (tableauPizzas[i].getCode().equals(codePizza)) { // Si on trouve la pizza correspondant au code
+					return tableauPizzas[i]; // on retourne la pizza
+				}
 			}
 		}
 		return null; // Si aucune pizza ne correspond au code de la pizza, on retourne null
