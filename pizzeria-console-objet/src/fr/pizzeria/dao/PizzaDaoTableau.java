@@ -8,7 +8,7 @@ import fr.pizzeria.model.Pizza;
 /**
  * @author keylan Data Access Object : TABLEAU
  */
-public class PizzaDaoTableau implements iPizzaDao {
+public class PizzaDaoTableau implements IPizzaDao {
 	/** tableauPizzas */
 	private static Pizza[] tableauPizzas = new Pizza[8];
 

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import fr.pizzeria.dao.PizzaDaoList;
 import fr.pizzeria.dao.PizzaDaoTableau;
-import fr.pizzeria.dao.iPizzaDao;
+import fr.pizzeria.dao.IPizzaDao;
 
 /**
  * 
@@ -23,7 +23,7 @@ public class PizzeriaAdminConsoleApp extends Outils {
 	/** menu */
 	private static Menu menu;
 	/** dao */
-	private static iPizzaDao dao;
+	private static IPizzaDao dao;
 	/** listerLesPizzas */
 	private static ListerLesPizzasOptionMenu listerLesPizzas;
 	/** nouvellePizzaOptionMenu */

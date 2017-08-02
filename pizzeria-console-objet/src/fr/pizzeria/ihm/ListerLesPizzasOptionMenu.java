@@ -3,7 +3,7 @@
  */
 package fr.pizzeria.ihm;
 
-import fr.pizzeria.dao.iPizzaDao;
+import fr.pizzeria.dao.IPizzaDao;
 
 /**
  * @author keylan ListerLesPizzas : Affiche la liste des pizzas
@@ -11,12 +11,12 @@ import fr.pizzeria.dao.iPizzaDao;
 class ListerLesPizzasOptionMenu extends OptionMenu {
 
 	/** dao */
-	iPizzaDao dao;
+	IPizzaDao dao;
 
 	/**
 	 * Constructor
 	 */
-	public ListerLesPizzasOptionMenu(iPizzaDao dao) {
+	public ListerLesPizzasOptionMenu(IPizzaDao dao) {
 		this.dao = dao;
 	}
 

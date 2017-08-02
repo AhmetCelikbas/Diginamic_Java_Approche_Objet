@@ -10,7 +10,7 @@ import fr.pizzeria.model.Pizza;
  * @author keylan
  *
  */
-public class PizzaDaoList implements iPizzaDao {
+public class PizzaDaoList implements IPizzaDao {
 
 	/** arrayListPizzas */
 	private static ArrayList<Pizza> arrayListPizzas = new ArrayList<Pizza>();

@@ -5,7 +5,7 @@ import fr.pizzeria.model.Pizza;
 /**
  * @author keylan Interface pizza DAO
  */
-public interface iPizzaDao {
+public interface IPizzaDao {
 
 	/**
 	 * Method créé un tableau de pizzas

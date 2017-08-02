@@ -4,7 +4,7 @@
 package fr.pizzeria.ihm;
 
 import java.util.Scanner;
-import fr.pizzeria.dao.iPizzaDao;
+import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.model.Pizza;
 
 /**
@@ -13,7 +13,7 @@ import fr.pizzeria.model.Pizza;
 class ModifierPizzaOptionMenu extends OptionMenu {
 
 	/** dao */
-	private iPizzaDao dao;
+	private IPizzaDao dao;
 	/** listerLesPizzasOptionMenu */
 	private ListerLesPizzasOptionMenu listerLesPizzasOptionMenu;
 
@@ -23,7 +23,7 @@ class ModifierPizzaOptionMenu extends OptionMenu {
 	/**
 	 * @param dao
 	 */
-	public ModifierPizzaOptionMenu(iPizzaDao dao) {
+	public ModifierPizzaOptionMenu(IPizzaDao dao) {
 		this.dao = dao;
 		listerLesPizzasOptionMenu = new ListerLesPizzasOptionMenu(this.dao);
 		this.scan = new Scanner(System.in);
