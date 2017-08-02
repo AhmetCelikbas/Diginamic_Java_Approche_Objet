@@ -2,6 +2,8 @@ package fr.pizzeria.ihm;
 
 import java.util.Scanner;
 
+import org.apache.commons.lang3.math.NumberUtils;
+
 import fr.pizzeria.dao.PizzaDaoList;
 import fr.pizzeria.dao.PizzaDaoTableau;
 import fr.pizzeria.dao.IPizzaDao;
@@ -17,90 +19,55 @@ public class PizzeriaAdminConsoleApp extends Outils {
 	 * Variables
 	 */
 	/** scan */
-	private static Scanner scan;
+	private static Scanner scan = new Scanner(System.in);
 	/** buffer */
-	private static String buffer;
-	/** menu */
-	private static Menu menu;
+	private static String buffer = "0";
 	/** dao */
-	private static IPizzaDao dao;
-	/** listerLesPizzas */
-	private static ListerLesPizzasOptionMenu listerLesPizzas;
-//	/** nouvellePizzaOptionMenu */
-//	private static NouvellePizzaOptionMenu nouvellePizzaOptionMenu;
-//	/** modifierPizzaOptionMenu */
-//	private static ModifierPizzaOptionMenu modifierPizzaOptionMenu;
-//	/** supprimerPizzaOptionMenu */
-//	private static SupprimerPizzaOptionMenu supprimerPizzaOptionMenu;
+	private static IPizzaDao dao = new PizzaDaoList();
+	/** menu */
+	private static Menu menu = new Menu(dao, scan);
 
 	/**
+	 * Point d'entrée de l'application
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		/*
-		 * Instanciations
+		 * On boucle tant que l'utilisateur ne souhaite pas quitter (99) ou que le menu
+		 * choisi par l'utilisateur n'est pas reconnu
 		 */
-		scan = new Scanner(System.in); // Instancie la classe Scanner pour capturer les informations renseignées par le
-										// clavier.
-		menu = new Menu();
-		// dao = new PizzaDaoTableau();
-		dao = new PizzaDaoList();
-		listerLesPizzas = new ListerLesPizzasOptionMenu(dao, scan);
-//		nouvellePizzaOptionMenu = new NouvellePizzaOptionMenu(dao);
-//		modifierPizzaOptionMenu = new ModifierPizzaOptionMenu(dao);
-//		supprimerPizzaOptionMenu = new SupprimerPizzaOptionMenu(dao);
-
-		while (true) {
-			/*
-			 * Menu principal
-			 */
-			menu.afficherMenuPrincipal();
+		while ((NumberUtils.createInteger(buffer) != 99) || (!menu.verifierMenuChoisi(buffer))) {
+			menu.afficher(); // Menu principal
 			System.out.print("Choisir un menu : ");
-			buffer = scan.next(); // Attente du choix du menu par l'utilisateur
+			buffer = scan.next(); // On demande à l'utilisateur de choisir un menu
 
 			/*
 			 * On vérifie que l'utilisateur a choisi un menu qui existe
 			 */
-			while (!Outils.verifierMenuChoisi(buffer)) {
-				System.out.println("Menu non reconnu.");
+			while (!menu.verifierMenuChoisi(buffer)) {
+				if (!NumberUtils.isCreatable(buffer)) {
+					System.out.println("Menu non reconnu.");
+				}
+
 				System.out.print("Choisir un menu : ");
 				buffer = scan.next(); // On redemande à l'utilisateur de choisir un menu si son précédent choix n'a
 										// pas été reconnu
 			}
 
 			/*
-			 * Si l'utilisateur souhaite sortir
+			 * Si l'utilisateur ne souhaite pas quitter, on exécute l'action correspondant
+			 * au menu choisi
 			 */
-			if (Integer.parseInt(buffer) == 99) {
-				scan.close(); // Fermer le scanner
-				System.out.println("Aurevoir :(");
-				return;
+			if (NumberUtils.createInteger(buffer) != 99) {
+				System.out.print("\n\n");
+				menu.actions[Integer.parseInt(buffer) - 1].execute(); // décalage de 1 en moins pour correspondre au
+																		// tableau
+				System.out.print("\n\n");
 			}
-
-			System.out.print("\n\n");
-
-			/*
-			 * Choisir le code à exécuter en fonction du menu choisi
-			 */
-			switch (Integer.parseInt(buffer)) {
-			case 1:
-				listerLesPizzas.execute();
-				break;
-			case 2:
-//				nouvellePizzaOptionMenu.execute();
-				break;
-			case 3:
-//				modifierPizzaOptionMenu.execute();
-				break;
-			case 4:
-//				supprimerPizzaOptionMenu.execute();
-				break;
-			default:
-				break;
-			}
-
-			System.out.print("\n\n");
 
 		}
+		scan.close(); // Fermer le scanner
+		System.out.println("Aurevoir :(");
 	}
 }
