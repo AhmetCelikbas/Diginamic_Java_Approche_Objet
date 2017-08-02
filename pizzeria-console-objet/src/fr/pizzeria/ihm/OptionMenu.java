@@ -1,4 +1,4 @@
-package fr.pizzeria.console;
+package fr.pizzeria.ihm;
 
 public abstract class OptionMenu {
 
@@ -11,4 +11,7 @@ public abstract class OptionMenu {
 	 * @return boolean
 	 */
 	abstract boolean execute();
+	
+	
+	
 }

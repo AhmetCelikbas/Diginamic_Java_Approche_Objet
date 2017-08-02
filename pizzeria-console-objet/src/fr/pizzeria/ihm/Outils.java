@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fr.pizzeria.console;
+package fr.pizzeria.ihm;
 
 /**
  * @author keylan Outils : methodes outils

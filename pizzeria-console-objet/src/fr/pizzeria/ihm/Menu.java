@@ -1,4 +1,4 @@
-package fr.pizzeria.console;
+package fr.pizzeria.ihm;
 
 public class Menu {
 

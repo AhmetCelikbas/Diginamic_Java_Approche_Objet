@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fr.pizzeria.console;
+package fr.pizzeria.ihm;
 
 import java.util.Scanner;
 import fr.pizzeria.dao.iPizzaDao;
