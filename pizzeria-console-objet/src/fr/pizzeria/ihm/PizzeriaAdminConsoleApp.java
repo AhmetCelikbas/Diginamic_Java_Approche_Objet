@@ -26,12 +26,12 @@ public class PizzeriaAdminConsoleApp extends Outils {
 	private static IPizzaDao dao;
 	/** listerLesPizzas */
 	private static ListerLesPizzasOptionMenu listerLesPizzas;
-	/** nouvellePizzaOptionMenu */
-	private static NouvellePizzaOptionMenu nouvellePizzaOptionMenu;
-	/** modifierPizzaOptionMenu */
-	private static ModifierPizzaOptionMenu modifierPizzaOptionMenu;
-	/** supprimerPizzaOptionMenu */
-	private static SupprimerPizzaOptionMenu supprimerPizzaOptionMenu;
+//	/** nouvellePizzaOptionMenu */
+//	private static NouvellePizzaOptionMenu nouvellePizzaOptionMenu;
+//	/** modifierPizzaOptionMenu */
+//	private static ModifierPizzaOptionMenu modifierPizzaOptionMenu;
+//	/** supprimerPizzaOptionMenu */
+//	private static SupprimerPizzaOptionMenu supprimerPizzaOptionMenu;
 
 	/**
 	 * @param args
@@ -45,10 +45,10 @@ public class PizzeriaAdminConsoleApp extends Outils {
 		menu = new Menu();
 		// dao = new PizzaDaoTableau();
 		dao = new PizzaDaoList();
-		listerLesPizzas = new ListerLesPizzasOptionMenu(dao);
-		nouvellePizzaOptionMenu = new NouvellePizzaOptionMenu(dao);
-		modifierPizzaOptionMenu = new ModifierPizzaOptionMenu(dao);
-		supprimerPizzaOptionMenu = new SupprimerPizzaOptionMenu(dao);
+		listerLesPizzas = new ListerLesPizzasOptionMenu(dao, scan);
+//		nouvellePizzaOptionMenu = new NouvellePizzaOptionMenu(dao);
+//		modifierPizzaOptionMenu = new ModifierPizzaOptionMenu(dao);
+//		supprimerPizzaOptionMenu = new SupprimerPizzaOptionMenu(dao);
 
 		while (true) {
 			/*
@@ -87,13 +87,13 @@ public class PizzeriaAdminConsoleApp extends Outils {
 				listerLesPizzas.execute();
 				break;
 			case 2:
-				nouvellePizzaOptionMenu.execute();
+//				nouvellePizzaOptionMenu.execute();
 				break;
 			case 3:
-				modifierPizzaOptionMenu.execute();
+//				modifierPizzaOptionMenu.execute();
 				break;
 			case 4:
-				supprimerPizzaOptionMenu.execute();
+//				supprimerPizzaOptionMenu.execute();
 				break;
 			default:
 				break;

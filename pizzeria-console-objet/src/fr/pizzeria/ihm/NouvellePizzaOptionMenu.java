@@ -13,17 +13,11 @@ import fr.pizzeria.model.Pizza;
  */
 class NouvellePizzaOptionMenu extends OptionMenu {
 
-	/** dao */
-	private IPizzaDao dao;
-	/** scan */
-	private Scanner scan;
-
 	/**
 	 * Constructor
 	 */
-	public NouvellePizzaOptionMenu(IPizzaDao dao) {
-		this.dao = dao;
-		this.scan = new Scanner(System.in);
+	public NouvellePizzaOptionMenu(IPizzaDao dao, Scanner scan) {
+		super(dao, scan);
 	}
 
 	/**

@@ -1,17 +1,39 @@
 package fr.pizzeria.ihm;
 
+import java.util.Scanner;
+
+import fr.pizzeria.dao.IPizzaDao;
+
 public abstract class OptionMenu {
 
-	/** Method
+	/** scan */
+	protected Scanner scan;
+	/** dao */
+	protected IPizzaDao dao;
+
+	/**
+	 * Ctor
+	 * 
+	 * @param dao
+	 * @param scan
+	 */
+	public OptionMenu(IPizzaDao dao, Scanner scan) {
+		this.dao = dao;
+		this.scan = scan;
+	}
+
+	/**
+	 * Method
+	 * 
 	 * @return String
 	 */
 	abstract String getLibelle();
 
-	/** Method
+	/**
+	 * Method
+	 * 
 	 * @return boolean
 	 */
 	abstract boolean execute();
-	
-	
-	
+
 }

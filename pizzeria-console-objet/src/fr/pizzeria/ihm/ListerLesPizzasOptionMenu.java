@@ -3,6 +3,8 @@
  */
 package fr.pizzeria.ihm;
 
+import java.util.Scanner;
+
 import fr.pizzeria.dao.IPizzaDao;
 
 /**
@@ -10,14 +12,11 @@ import fr.pizzeria.dao.IPizzaDao;
  */
 class ListerLesPizzasOptionMenu extends OptionMenu {
 
-	/** dao */
-	IPizzaDao dao;
-
 	/**
 	 * Constructor
 	 */
-	public ListerLesPizzasOptionMenu(IPizzaDao dao) {
-		this.dao = dao;
+	public ListerLesPizzasOptionMenu(IPizzaDao dao, Scanner scan) {
+		super(dao, scan);
 	}
 
 	/**

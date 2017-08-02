@@ -14,21 +14,15 @@ import fr.pizzeria.model.Pizza;
  */
 public class SupprimerPizzaOptionMenu extends OptionMenu {
 
-	/** dao */
-	private IPizzaDao dao;
 	/** listerLesPizzas */
 	private ListerLesPizzasOptionMenu listerLesPizzas;
-
-	/** scan */
-	private Scanner scan;
 
 	/**
 	 * @param dao
 	 */
-	public SupprimerPizzaOptionMenu(IPizzaDao dao) {
-		this.dao = dao;
-		this.listerLesPizzas = new ListerLesPizzasOptionMenu(this.dao);
-		this.scan = new Scanner(System.in);
+	public SupprimerPizzaOptionMenu(IPizzaDao dao, Scanner scan) {
+		super(dao, scan);
+		this.listerLesPizzas = new ListerLesPizzasOptionMenu(dao, scan);
 	}
 
 	/*

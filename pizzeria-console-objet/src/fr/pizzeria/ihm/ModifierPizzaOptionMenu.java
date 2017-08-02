@@ -11,22 +11,16 @@ import fr.pizzeria.model.Pizza;
  * @author keylan ModifierPizzaOptionMenu : mettre a jour une pizza
  */
 class ModifierPizzaOptionMenu extends OptionMenu {
-
-	/** dao */
-	private IPizzaDao dao;
+	
 	/** listerLesPizzasOptionMenu */
 	private ListerLesPizzasOptionMenu listerLesPizzasOptionMenu;
-
-	/** scan */
-	private Scanner scan;
 
 	/**
 	 * @param dao
 	 */
-	public ModifierPizzaOptionMenu(IPizzaDao dao) {
-		this.dao = dao;
-		listerLesPizzasOptionMenu = new ListerLesPizzasOptionMenu(this.dao);
-		this.scan = new Scanner(System.in);
+	public ModifierPizzaOptionMenu(IPizzaDao dao, Scanner scan) {
+		super(dao, scan);
+		listerLesPizzasOptionMenu = new ListerLesPizzasOptionMenu(dao, scan);
 	}
 
 	/*
