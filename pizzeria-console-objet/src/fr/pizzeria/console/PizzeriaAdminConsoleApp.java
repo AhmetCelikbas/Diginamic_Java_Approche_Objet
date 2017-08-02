@@ -43,7 +43,7 @@ public class PizzeriaAdminConsoleApp extends Outils {
 		scan = new Scanner(System.in); // Instancie la classe Scanner pour capturer les informations renseignées par le
 										// clavier.
 		menu = new Menu();
-//		dao = new PizzaDaoTableau();
+		// dao = new PizzaDaoTableau();
 		dao = new PizzaDaoList();
 		listerLesPizzas = new ListerLesPizzasOptionMenu(dao);
 		nouvellePizzaOptionMenu = new NouvellePizzaOptionMenu(dao);
@@ -93,7 +93,7 @@ public class PizzeriaAdminConsoleApp extends Outils {
 				modifierPizzaOptionMenu.execute();
 				break;
 			case 4:
-				 supprimerPizzaOptionMenu.execute();
+				supprimerPizzaOptionMenu.execute();
 				break;
 			default:
 				break;

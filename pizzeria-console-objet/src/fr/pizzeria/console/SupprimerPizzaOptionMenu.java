@@ -13,7 +13,7 @@ import fr.pizzeria.model.Pizza;
  *
  */
 public class SupprimerPizzaOptionMenu extends OptionMenu {
-	
+
 	/** dao */
 	private iPizzaDao dao;
 	/** listerLesPizzas */
@@ -21,7 +21,7 @@ public class SupprimerPizzaOptionMenu extends OptionMenu {
 
 	/** scan */
 	private Scanner scan;
-	
+
 	/**
 	 * @param dao
 	 */
@@ -30,8 +30,10 @@ public class SupprimerPizzaOptionMenu extends OptionMenu {
 		this.listerLesPizzas = new ListerLesPizzasOptionMenu(this.dao);
 		this.scan = new Scanner(System.in);
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see fr.pizzeria.console.OptionMenu#execute()
 	 */
 	public boolean execute() {
@@ -52,10 +54,10 @@ public class SupprimerPizzaOptionMenu extends OptionMenu {
 			System.out.print("Merci d'entrer un code pizza valide ou de saisir le 99 pour abandonner : ");
 			buffer = scan.next();
 		}
-		
+
 		System.out.println("Supprimer la pizza : " + pizzaASupprimer.getCode() + " -> " + pizzaASupprimer.getNom()
-		+ " (" + pizzaASupprimer.getPrix() + " €)");
-		
+				+ " (" + pizzaASupprimer.getPrix() + " €)");
+
 		System.out.print("Confirmer la suppression ? (o/n) : ");
 		if (scan.next().equals("o")) {
 			if (dao.deletePizza(pizzaASupprimer.getCode())) {
@@ -74,5 +76,5 @@ public class SupprimerPizzaOptionMenu extends OptionMenu {
 		// TODO Auto-generated method stub
 		return "Supprimer une pizza";
 	}
-	
+
 }

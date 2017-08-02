@@ -9,11 +9,10 @@ import fr.pizzeria.dao.iPizzaDao;
 import fr.pizzeria.model.Pizza;
 
 /**
- * @author keylan
- * NouvellePizzaOptionMenu : Créé une nouvelle pizza
+ * @author keylan NouvellePizzaOptionMenu : Créé une nouvelle pizza
  */
 class NouvellePizzaOptionMenu {
-	
+
 	/** dao */
 	private iPizzaDao dao;
 	/** scan */
@@ -26,31 +25,30 @@ class NouvellePizzaOptionMenu {
 		this.dao = dao;
 		this.scan = new Scanner(System.in);
 	}
-	
-	
-	/** Method
+
+	/**
+	 * Method
 	 * 
 	 */
-	protected void execute(){
+	protected void execute() {
 		String codeRenseigne;
 		String nomRenseigne;
 		String prixRenseigne;
-		
-		
+
 		System.out.println("Ajout d’une nouvelle pizza");
-		
+
 		/*
 		 * Demande du code
 		 */
 		System.out.print("Veuillez saisir le code : ");
 		codeRenseigne = scan.next();
-		
-		while(dao.getPizzaByCode(codeRenseigne.trim().toUpperCase()) != null) {
+
+		while (dao.getPizzaByCode(codeRenseigne.trim().toUpperCase()) != null) {
 			System.out.println("Code déjà utilisé par une Pizza.");
 			System.out.print("Veuillez saisir un autre code : ");
 			codeRenseigne = scan.next();
 		}
-		
+
 		/*
 		 * Demande du nom
 		 */
@@ -62,30 +60,30 @@ class NouvellePizzaOptionMenu {
 		 */
 		System.out.print("Veuillez saisir le prix : ");
 		prixRenseigne = scan.next();
-		prixRenseigne = prixRenseigne.replace(',', '.');		// Remplacer la virgule par un point si il en à une
-		
+		prixRenseigne = prixRenseigne.replace(',', '.'); // Remplacer la virgule par un point si il en à une
+
 		/*
 		 * Verifier le prix
 		 */
-		while(!Outils.verifierPrix(prixRenseigne)) {
+		while (!Outils.verifierPrix(prixRenseigne)) {
 			System.out.println("Saisie incorrecte.");
 			System.out.print("Veuillez saisir le prix à nouveau : ");
 			prixRenseigne = scan.next();
 		}
 
-		/* 
+		/*
 		 * Si l'ajout réussi
 		 */
-		if(dao.saveNewPizza(new Pizza(codeRenseigne, nomRenseigne, Double.parseDouble(prixRenseigne)))) {
+		if (dao.saveNewPizza(new Pizza(codeRenseigne, nomRenseigne, Double.parseDouble(prixRenseigne)))) {
 			/*
 			 * On fini en beauté !
 			 */
-			System.out.println("Pizza ajoutée");		
+			System.out.println("Pizza ajoutée");
 		} else {
 			/*
 			 * On fini en beauté !
 			 */
-			System.out.println("Pizza non ajoutée :( !!!");	
+			System.out.println("Pizza non ajoutée :( !!!");
 		}
 	}
 }

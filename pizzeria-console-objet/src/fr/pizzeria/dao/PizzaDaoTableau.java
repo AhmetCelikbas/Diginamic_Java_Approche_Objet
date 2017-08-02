@@ -88,7 +88,7 @@ public class PizzaDaoTableau implements iPizzaDao {
 	@Override
 	public boolean updatePizza(String codePizza, Pizza pizza) {
 		for (int i = 0; i < tableauPizzas.length; i++) { // on parcourt le tableau de pizzas
-			if(tableauPizzas[i] != null) {
+			if (tableauPizzas[i] != null) {
 				if (tableauPizzas[i].getCode().equals(codePizza)) { // Si on trouve la pizza correspondant au code
 					tableauPizzas[i].setCode(pizza.getCode()); // définir le code de la pizza
 					tableauPizzas[i].setNom(pizza.getNom()); // définir le nom de la pizza
@@ -109,7 +109,7 @@ public class PizzaDaoTableau implements iPizzaDao {
 	@Override
 	public Pizza getPizzaByCode(String codePizza) {
 		for (int i = 0; i < tableauPizzas.length; i++) { // on parcourt le tableau de pizzas
-			if(tableauPizzas[i] != null) {
+			if (tableauPizzas[i] != null) {
 				if (tableauPizzas[i].getCode().equals(codePizza)) { // Si on trouve la pizza correspondant au code
 					return tableauPizzas[i]; // on retourne la pizza
 				}
@@ -126,7 +126,7 @@ public class PizzaDaoTableau implements iPizzaDao {
 	@Override
 	public boolean deletePizza(String codePizza) {
 		for (int i = 0; i < tableauPizzas.length; i++) { // on parcourt le tableau de pizzas
-			if(tableauPizzas[i] != null) {
+			if (tableauPizzas[i] != null) {
 				if (tableauPizzas[i].getCode().equals(codePizza)) { // Si on trouve la pizza correspondant au code
 					tableauPizzas[i] = null; // On supprime la pizza
 					return true; // on notifie la suppression de la pizza en retourant un booleen positif

@@ -29,7 +29,9 @@ class ModifierPizzaOptionMenu extends OptionMenu {
 		this.scan = new Scanner(System.in);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see fr.pizzeria.console.OptionMenu#execute()
 	 */
 	protected boolean execute() {
