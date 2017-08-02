@@ -11,7 +11,7 @@ import fr.pizzeria.model.Pizza;
 /**
  * @author keylan NouvellePizzaOptionMenu : Créé une nouvelle pizza
  */
-class NouvellePizzaOptionMenu {
+class NouvellePizzaOptionMenu extends OptionMenu {
 
 	/** dao */
 	private iPizzaDao dao;
@@ -85,5 +85,11 @@ class NouvellePizzaOptionMenu {
 			 */
 			System.out.println("Pizza non ajoutée :( !!!");
 		}
+	}
+
+	@Override
+	String getLibelle() {
+		// TODO Auto-generated method stub
+		return "Ajouter une nouvelle pizza";
 	}
 }
