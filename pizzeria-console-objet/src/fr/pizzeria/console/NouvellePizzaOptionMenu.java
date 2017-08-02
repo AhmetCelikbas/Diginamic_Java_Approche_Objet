@@ -28,9 +28,10 @@ class NouvellePizzaOptionMenu extends OptionMenu {
 
 	/**
 	 * Method
+	 * @return 
 	 * 
 	 */
-	protected void execute() {
+	protected boolean execute() {
 		String codeRenseigne;
 		String nomRenseigne;
 		String prixRenseigne;
@@ -85,6 +86,7 @@ class NouvellePizzaOptionMenu extends OptionMenu {
 			 */
 			System.out.println("Pizza non ajoutée :( !!!");
 		}
+		return true;
 	}
 
 	@Override
