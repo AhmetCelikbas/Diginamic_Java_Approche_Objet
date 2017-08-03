@@ -10,7 +10,7 @@ public class Menu {
 
 	private IPizzaDao dao;
 	private Scanner scan;
-	protected static OptionMenu[] actions = new OptionMenu[4];
+	protected OptionMenu[] actions = new OptionMenu[4];
 
 	protected Menu(IPizzaDao dao, Scanner scan) {
 		this.dao = dao;

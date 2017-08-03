@@ -6,6 +6,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 
 import fr.pizzeria.dao.PizzaDaoList;
 import fr.pizzeria.dao.PizzaDaoTableau;
+import fr.pizzeria.exception.SavePizzaException;
 import fr.pizzeria.dao.IPizzaDao;
 
 /**
@@ -61,8 +62,15 @@ public class PizzeriaAdminConsoleApp extends Outils {
 			 */
 			if (NumberUtils.createInteger(buffer) != 99) {
 				System.out.print("\n\n");
-				menu.actions[Integer.parseInt(buffer) - 1].execute(); // décalage de 1 en moins pour correspondre au
-																		// tableau
+				try {
+					menu.actions[Integer.parseInt(buffer) - 1].execute(); // décalage de 1 en moins pour correspondre au
+																			// tableau actions
+				} catch (NumberFormatException e) {
+
+				} catch (SavePizzaException e) {
+					System.out.println(e.getMessage());
+
+				}
 				System.out.print("\n\n");
 			}
 
