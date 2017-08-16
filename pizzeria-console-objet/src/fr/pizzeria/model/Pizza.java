@@ -1,5 +1,8 @@
 package fr.pizzeria.model;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+
 /**
  * Class Pizza
  * 
@@ -13,8 +16,10 @@ public class Pizza {
 	/** id */
 	private int id;
 	/** code */
+	@ToString(uppercase = true)
 	private String code;
 	/** nom */
+	@ToString
 	private String nom;
 	/** prix */
 	private double prix;
@@ -37,7 +42,6 @@ public class Pizza {
 		this.categorie = categorie;
 	}
 
-	
 	public Pizza(String code, String nom, double prix) {
 		this.id = Pizza.lastId;
 		Pizza.lastId++;
@@ -45,7 +49,7 @@ public class Pizza {
 		this.nom = nom;
 		this.prix = prix;
 	}
-	
+
 	/**
 	 * Getter
 	 * 
@@ -143,8 +147,30 @@ public class Pizza {
 
 	@Override
 	public String toString() {
-		return "n°" + (this.getId() + 1) + " : " + this.getCode() + " -> " + this.getNom() + " -> "
-				+ this.getCategorie() + " (" + this.getPrix() + " €)";
+		try {
+			for (Field field : this.getClass().getDeclaredFields()) {
+				field.setAccessible(true);
+				if (field.getAnnotation(ToString.class) != null) {
+					for (Annotation annotation : field.getDeclaredAnnotations()) {
+						if (annotation instanceof ToString) {
+							ToString toString = (ToString) annotation;
+							if (toString.uppercase()) {
+								return "n°" + (this.getId() + 1) + " : " + this.getCode() + " -> " + this.getNom()
+										+ " -> " + this.getCategorie() + " (" + this.getPrix() + " €)";
+							} else {
+								return null;
+							}
+						}
+
+					}
+
+				}
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
