@@ -18,6 +18,8 @@ public class Pizza {
 	private String nom;
 	/** prix */
 	private double prix;
+	/** categorie */
+	private CategoriePizza categorie;
 
 	/**
 	 * Constructeur Pizza lastId auto-incrémenté
@@ -26,6 +28,16 @@ public class Pizza {
 	 * @param nom
 	 * @param prix
 	 */
+	public Pizza(String code, String nom, double prix, CategoriePizza categorie) {
+		this.id = Pizza.lastId;
+		Pizza.lastId++;
+		this.code = code;
+		this.nom = nom;
+		this.prix = prix;
+		this.categorie = categorie;
+	}
+
+	
 	public Pizza(String code, String nom, double prix) {
 		this.id = Pizza.lastId;
 		Pizza.lastId++;
@@ -33,7 +45,7 @@ public class Pizza {
 		this.nom = nom;
 		this.prix = prix;
 	}
-
+	
 	/**
 	 * Getter
 	 * 
@@ -108,6 +120,31 @@ public class Pizza {
 	 */
 	public void setPrix(double prix) {
 		this.prix = prix;
+	}
+
+	/**
+	 * Getter
+	 * 
+	 * @return the categorie
+	 */
+	public CategoriePizza getCategorie() {
+		return categorie;
+	}
+
+	/**
+	 * Setter
+	 * 
+	 * @param categorie
+	 *            the categorie to set
+	 */
+	public void setCategorie(CategoriePizza categorie) {
+		this.categorie = categorie;
+	}
+
+	@Override
+	public String toString() {
+		return "n°" + (this.getId() + 1) + " : " + this.getCode() + " -> " + this.getNom() + " -> "
+				+ this.getCategorie() + " (" + this.getPrix() + " €)";
 	}
 
 }
