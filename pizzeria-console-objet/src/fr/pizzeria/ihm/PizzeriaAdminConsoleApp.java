@@ -6,7 +6,9 @@ import org.apache.commons.lang3.math.NumberUtils;
 
 import fr.pizzeria.dao.PizzaDaoList;
 import fr.pizzeria.dao.PizzaDaoTableau;
+import fr.pizzeria.exception.DeletePizzaException;
 import fr.pizzeria.exception.SavePizzaException;
+import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.dao.IPizzaDao;
 
 /**
@@ -68,6 +70,10 @@ public class PizzeriaAdminConsoleApp extends Outils {
 				} catch (NumberFormatException e) {
 
 				} catch (SavePizzaException e) {
+					System.out.println(e.getMessage());
+				} catch (UpdatePizzaException e) {
+					System.out.println(e.getMessage());
+				} catch (DeletePizzaException e) {
 					System.out.println(e.getMessage());
 
 				}

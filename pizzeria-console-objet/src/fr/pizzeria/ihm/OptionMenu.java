@@ -3,7 +3,9 @@ package fr.pizzeria.ihm;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
+import fr.pizzeria.exception.DeletePizzaException;
 import fr.pizzeria.exception.SavePizzaException;
+import fr.pizzeria.exception.UpdatePizzaException;
 
 public abstract class OptionMenu {
 
@@ -36,6 +38,6 @@ public abstract class OptionMenu {
 	 * @return boolean
 	 * @throws SavePizzaException 
 	 */
-	abstract boolean execute() throws SavePizzaException;
+	abstract boolean execute() throws SavePizzaException, UpdatePizzaException, DeletePizzaException;
 
 }

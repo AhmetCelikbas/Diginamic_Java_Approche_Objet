@@ -79,7 +79,7 @@ class NouvellePizzaOptionMenu extends OptionMenu {
 		 * On vérifie si le prix renseigné peut-être converti
 		 */
 		if (!NumberUtils.isCreatable(prixRenseigne)) {
-			throw new SavePizzaException(SavePizzaException.EXCEP__PRIX_INCORRECT);
+			throw new SavePizzaException(SavePizzaException.EXCEP_PRIX_INCORRECT);
 		}
 
 		/*
@@ -91,7 +91,7 @@ class NouvellePizzaOptionMenu extends OptionMenu {
 			 */
 			System.out.println("Pizza ajoutée");
 		} else {
-			throw new SavePizzaException("Pizza non ajoutée :( !!!");
+			throw new SavePizzaException(SavePizzaException.EXCEP_PIZZA_NON_AJOUTEE);
 		}
 		return true;
 	}

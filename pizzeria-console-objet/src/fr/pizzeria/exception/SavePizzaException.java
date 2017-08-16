@@ -7,15 +7,14 @@ package fr.pizzeria.exception;
  * @author keylan
  *
  */
-public class SavePizzaException extends Exception {
+public class SavePizzaException extends StockageException {
 
 	/** serialVersionUID */
 	private static final long serialVersionUID = -7742084499561652364L;
 	
-	public static final String 
-			EXCEP_TAILLE_CODE_PIZZA = "Code pizza trop court ou trop long. (Min. 3 caractères, Max. 4 caractères).",
-			EXCEP__PRIX_INCORRECT = "Prix incorect";
-
+	
+	public static final String EXCEP_PIZZA_NON_AJOUTEE = "Pizza non ajoutée :( !!!";
+	
 	/**
 	 * Ctor
 	 * 

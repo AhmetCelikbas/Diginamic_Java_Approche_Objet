@@ -5,6 +5,7 @@ package fr.pizzeria.ihm;
 
 import java.util.Scanner;
 import fr.pizzeria.dao.IPizzaDao;
+import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.Pizza;
 
 /**
@@ -28,7 +29,7 @@ class ModifierPizzaOptionMenu extends OptionMenu {
 	 * 
 	 * @see fr.pizzeria.console.OptionMenu#execute()
 	 */
-	protected boolean execute() {
+	protected boolean execute() throws UpdatePizzaException {
 		String buffer = "";
 		listerLesPizzasOptionMenu.execute();
 
@@ -56,6 +57,12 @@ class ModifierPizzaOptionMenu extends OptionMenu {
 		System.out.print("Veuillez saisir le nouveau code : ");
 		nouveauCode = scan.next();
 
+		
+		if ((nouveauCode.trim().length() < 3) || (nouveauCode.trim().length() > 4) ) {
+			throw new UpdatePizzaException(UpdatePizzaException.EXCEP_TAILLE_CODE_PIZZA); 
+		}
+		
+		
 		/*
 		 * Demande du nom
 		 */
@@ -90,10 +97,10 @@ class ModifierPizzaOptionMenu extends OptionMenu {
 			if (dao.updatePizza(pizzaAMettreAJour.getCode(), nouvellePizza)) {
 				System.out.println("Pizza mis à jour.");
 			} else {
-				System.out.println("Pizza non mis à jour.");
+				throw new UpdatePizzaException(UpdatePizzaException.EXCEP_PIZZA_NON_MIS_A_JOUR);
 			}
 		} else {
-			System.out.println("Pizza non mis à jour.");
+			throw new UpdatePizzaException(UpdatePizzaException.EXCEP_PIZZA_NON_MIS_A_JOUR);
 		}
 		return true;
 	}
